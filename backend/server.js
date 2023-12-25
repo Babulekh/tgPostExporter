@@ -183,7 +183,12 @@ async function formatPost(rawPost, fullLink, fetchPhotos, notes, rawNotes, photo
       }
       if (fwdFrom.fromId.className === 'PeerChannel') {
         const fwdChannelId = Number(fwdFrom.fromId.channelId);
-        const { title } = otherChats.filter(({ id }) => id == fwdChannelId)[0];
+
+        if (otherChats) {
+          const { title } = otherChats.filter(({ id }) => id == fwdChannelId)[0];
+
+          forwardedFrom = title;
+        } else forwardedFrom = title;
 
         forwardedFrom = title;
       }
