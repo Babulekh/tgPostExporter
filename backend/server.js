@@ -263,7 +263,7 @@ function assembleCsv(posts) {
   log('Начал собирать таблицу');
 
   const delimeter = '\t';
-  let header = `Channel${delimeter}Repost${delimeter}Date & Time${delimeter}Text${delimeter}Link`;
+  let header = `Автор${delimeter}Repost${delimeter}Дата${delimeter}Сообщение${delimeter}Ссылка`;
   let maximumNotesPerRow = 0;
   const rows = [];
 
@@ -285,7 +285,12 @@ function assembleCsv(posts) {
   }
 
   for (let i = 1; i <= maximumNotesPerRow; i++) {
-    header += `${delimeter}Note${i}`;
+    if (i==1)
+      header += `${delimeter}Категория`;
+    else if(i == 2)
+      header +=  `${delimeter}Подкатегория`;
+    else
+      header += `${delimeter}Note${i}`;
   }
   header += '\n';
 
