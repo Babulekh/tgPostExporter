@@ -7,7 +7,7 @@ export const useSettingsStore = defineStore('settings', () => {
   const photoNote = ref('')
   const defaultNotes = ref('')
 
-  const response = fetch('http://localhost/settings', {
+  const response = fetch('http://localhost:8083/settings', {
     method: 'GET'
   })
 
