@@ -1,0 +1,40 @@
+{
+    // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+    // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+    // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "frontend",
+            "request": "launch",
+            "runtimeArgs": [
+                "run", "dev",
+                // "debug"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceFolder}/frontend",
+            "type": "node"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "backend",
+            "cwd": "${workspaceFolder}/backend",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "args": [
+                "server.js"
+            ]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Compound",
+            "configurations": ["backend", "frontend"]
+        }
+    ]
+}

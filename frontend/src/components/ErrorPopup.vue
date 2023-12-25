@@ -11,7 +11,7 @@ const isBackendConnected = ref(true)
 
 async function pingBackend() {
   try {
-    const response = await fetch('http://localhost/ping')
+    const response = await fetch('http://localhost:8083/ping')
 
     if (response.ok) isBackendConnected.value = true
     else isBackendConnected.value = false

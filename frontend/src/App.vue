@@ -158,7 +158,7 @@ async function fetchPosts() {
     }
   }
 
-  const response = await fetch('http://localhost/posts', {
+  const response = await fetch('http://localhost:8083/posts', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -193,7 +193,7 @@ function debounce(fn, timeout) {
 }
 
 function saveSettings(mutation, { inputText, notes, photoNote, defaultNotes }) {
-  fetch('http://localhost/settings', {
+  fetch('http://localhost:8083/settings', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
