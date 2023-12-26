@@ -285,9 +285,9 @@ function assembleCsv(posts) {
   }
 
   for (let i = 1; i <= maximumNotesPerRow; i++) {
-    if (i==1)
+    if (i === 1)
       header += `${delimeter}Категория`;
-    else if(i == 2)
+    else if(i === 2)
       header +=  `${delimeter}Подкатегория`;
     else
       header += `${delimeter}Note${i}`;
