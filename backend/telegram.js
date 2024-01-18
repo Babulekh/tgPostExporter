@@ -17,7 +17,7 @@ let client = {};
   let settings = readFileSync('settings.json', 'utf8');
   settings = JSON.parse(settings);
   let apiId = settings.apiId,
-    apiHash = settings.apiId,
+    apiHash = settings.apiHash,
     sessionString = settings.sessionString;
 
   if (!(settings.apiId && settings.apiHash)) {
