@@ -188,9 +188,9 @@ async function formatPost(rawPost, fullLink, fetchPhotos, notes, rawNotes, photo
           const { title } = otherChats.filter(({ id }) => id == fwdChannelId)[0];
 
           forwardedFrom = title;
-        } else forwardedFrom = title;
-
-        forwardedFrom = title;
+        } else {
+          forwardedFrom = title;
+        }
       }
     } else forwardedFrom = fwdFrom.fromName;
   }
