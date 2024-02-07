@@ -1,5 +1,6 @@
 const { log } = require('console');
 const { writeFileSync, readFileSync } = require('fs');
+const { startBot } = require('./bot');
 
 const {
   Api: {
@@ -10,6 +11,7 @@ const {
 } = require('telegram');
 const { StringSession } = require('telegram/sessions');
 const input = require('input');
+const { NewMessage, NewMessageEvent } = require('telegram/events');
 
 let client = {};
 
@@ -38,17 +40,23 @@ let client = {};
     connectionRetries: 5,
   });
   client.setLogLevel('error');
-  await client.start({
-    phoneNumber: async () => await input.text('Номер телефона с кодом страны '),
-    password: async () => await input.text('Пароль '),
-    phoneCode: async () => await input.text('Код подтверждения '),
-    onError: (err) => console.log(err),
-  });
+  if (settings.botToken) {
+    await client.start({botAuthToken: settings.botToken});
+    startBot(client);
+  }
+  else {
+    await client.start({
+      phoneNumber: async () => await input.text('Номер телефона с кодом страны '),
+      password: async () => await input.text('Пароль '),
+      phoneCode: async () => await input.text('Код подтверждения '),
+      onError: (err) => console.log(err),
+    });
+  }
   sessionString = client.session.save();
 
   writeFileSync('settings.json', JSON.stringify({ ...settings, apiId, apiHash, sessionString }, null, 2), () => {});
+  log('Авторизация прошла успешно, можно работать');
 })();
-log('Авторизация прошла успешно, можно работать');
 
 exports.getPhoto = async ({ id, accessHash, fileReference, dcId }, folderName) => {
   try {
