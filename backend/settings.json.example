@@ -11,4 +11,5 @@
   "apiId": "",
   "apiHash": "",
   "sessionString": ""
+  "botToken": false
 }
